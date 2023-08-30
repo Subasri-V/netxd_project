@@ -1,0 +1,38 @@
+syntax = "proto3";
+
+option go_package = "github.com/Sona-28/netxd_project";
+
+package netxd_customer;
+
+service CustomerService {
+    rpc CreateCustomer(CustomerData) returns (CustomerResponse) {}
+    rpc GetCustomer(CustomerID) returns (CustomerData) {}
+    rpc UpdateCustomer(UpdateCustomerRequest) returns (CustomerResponse) {}
+    rpc DeleteCustomer(CustomerID) returns (CustomerResponse) {}
+}
+
+message CustomerData{
+    int64 customer_id = 1;
+    string firstname = 2;
+    string lastname = 3;
+    int64 bank_id = 4;
+    int64 balance = 5;
+    string created_at = 6;
+    string updated_at = 7;
+    bool is_active = 8;
+}
+
+message CustomerResponse{
+    int64 customer_id = 1;
+    string created_at = 2;
+}
+
+
+message UpdateCustomerRequest {
+    int64 id = 1;
+    string topic = 2;
+    string newvalue = 3;
+}
+message CustomerID {
+    int64 customer_id = 1;
+}
